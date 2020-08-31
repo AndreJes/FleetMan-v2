@@ -16,7 +16,7 @@
         <Setter Property="BorderBrush" Value="WhiteSmoke"></Setter>
         <Setter Property="BorderThickness" Value="1"></Setter>
     </Style>
-    
+
     <Style x:Key="MainBorderStyle" TargetType="Border" BasedOn="{StaticResource BorderColorStyle}">
         <Setter Property="Margin" Value="10"></Setter>
     </Style>
@@ -44,5 +44,87 @@
 
     <Style x:Key="StatusLabelStyle" TargetType="Label" BasedOn="{StaticResource LabelColorStyle}">
         <Setter Property="Foreground" Value="WhiteSmoke"></Setter>
+    </Style>
+
+    <Style x:Key="StartBtnTemplateStyle" TargetType="Button">
+        <Setter Property="Margin" Value="10"/>
+        <Setter Property="Foreground" Value="Black" />
+        <Setter Property="FontWeight" Value="Bold" />
+        <Setter Property="Background">
+            <Setter.Value>
+                <LinearGradientBrush StartPoint="0,1" EndPoint="1,0" MappingMode="RelativeToBoundingBox" SpreadMethod="Reflect">
+                    <GradientStop Color="#FF0eff20" Offset="0.200"/>
+                    <GradientStop Color="#FF7ee085" Offset="1.65"/>
+                </LinearGradientBrush>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Border x:Name="buttonBackground" CornerRadius="5" Background="{TemplateBinding Background}">
+                        <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="buttonBackground" Property="Background">
+                                <Setter.Value>
+                                    <LinearGradientBrush StartPoint="0,1" EndPoint="1,0" MappingMode="RelativeToBoundingBox" SpreadMethod="Reflect">
+                                        <GradientStop Color="#FF90e997" Offset="0.0"/>
+                                        <GradientStop Color="#FF50ff4b" Offset="0.65"/>
+                                    </LinearGradientBrush>
+                                </Setter.Value>
+                            </Setter>
+                            <Setter Property="Foreground" Value="White"></Setter>
+                            <Setter Property="Cursor" Value="Hand"></Setter>
+                        </Trigger>
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter Property="Background" Value="LightGray" />
+                            <Setter Property="Foreground" Value="DimGray"></Setter>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="StopBtnTemplateStyle" TargetType="Button">
+        <Setter Property="Margin" Value="10"/>
+        <Setter Property="Foreground" Value="Black" />
+        <Setter Property="FontWeight" Value="Bold" />
+        <Setter Property="Background">
+            <Setter.Value>
+                <LinearGradientBrush StartPoint="0,1" EndPoint="1,0" MappingMode="RelativeToBoundingBox" SpreadMethod="Reflect">
+                    <GradientStop Color="#FFee2d2d" Offset="0.200"/>
+                    <GradientStop Color="#FFe33a3a" Offset="1.65"/>
+                </LinearGradientBrush>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Border x:Name="buttonBackground" CornerRadius="5" Background="{TemplateBinding Background}">
+                        <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="buttonBackground" Property="Background">
+                                <Setter.Value>
+                                    <LinearGradientBrush StartPoint="0,1" EndPoint="1,0" MappingMode="RelativeToBoundingBox" SpreadMethod="Reflect">
+                                        <GradientStop Color="#fe7575" Offset="0.0"/>
+                                        <GradientStop Color="#FFff4c4c" Offset="0.65"/>
+                                    </LinearGradientBrush>
+                                </Setter.Value>
+                            </Setter>
+                            <Setter Property="Foreground" Value="White"></Setter>
+                            <Setter Property="Cursor" Value="Hand"></Setter>
+                        </Trigger>
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter Property="Background" Value="LightGray" />
+                            <Setter Property="Foreground" Value="DimGray"></Setter>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
     </Style>
 </ResourceDictionary>

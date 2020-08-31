@@ -35,11 +35,11 @@ namespace FleetManApiController.UserControls
 
         public event PropertyChangedEventHandler PropertyChanged;
 
-        public async Task ChangeStatus(bool status)
+        public async Task ChangeStatus(bool active)
         {
             await Dispatcher.InvokeAsync(() =>
             {
-                if (status)
+                if (active)
                 {
                     StateLabel.Content = "Ativo";
                     StatusEllipse.Fill = new SolidColorBrush(_greencolor);
