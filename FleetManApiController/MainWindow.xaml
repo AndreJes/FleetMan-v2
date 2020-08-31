@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:FleetManApiController"
         xmlns:logger="clr-namespace:SimpleWPFLogger.UserControls;assembly=APILoggerControl"
+        xmlns:ucs="clr-namespace:FleetManApiController.UserControls"
         mc:Ignorable="d"
         Title="FleetMan API Manager" Style="{StaticResource MainWindowsStyle}">
     <Grid>
@@ -52,13 +53,8 @@
                         <ColumnDefinition Width="1*" />
                     </Grid.ColumnDefinitions>
 
-                    <StackPanel Grid.Row="0" Orientation="Horizontal">
-                        <Label Style="{StaticResource SubLabelStyle}">Serviços: </Label>
-                    </StackPanel>
-
-                    <StackPanel Grid.Row="1" Orientation="Horizontal">
-                        <Label Style="{StaticResource SubLabelStyle}">Conexão com BD: </Label>
-                    </StackPanel>
+                    <ucs:StatusLabelUC x:Name="ServiceStatusUC" Description="Serviço: " Grid.Row="0"></ucs:StatusLabelUC>
+                    <ucs:StatusLabelUC x:Name="DBConnectionStatusUC" Description="Conexão c/ BD: " Grid.Row="1"></ucs:StatusLabelUC>
                 </Grid>
             </Grid>
         </Border>

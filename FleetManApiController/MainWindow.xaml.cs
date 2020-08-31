@@ -23,6 +23,8 @@ namespace FleetManApiController
         public MainWindow()
         {
             InitializeComponent();
+            ServiceStatusUC.ChangeStatus(true);
+            DBConnectionStatusUC.ChangeStatus(false);
         }
     }
 }

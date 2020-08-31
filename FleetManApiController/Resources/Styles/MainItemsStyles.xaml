@@ -41,4 +41,8 @@
     <Style x:Key="SubLabelStyle" TargetType="Label" BasedOn="{StaticResource LabelColorStyle}">
         <Setter Property="FontWeight" Value="SemiBold"/>
     </Style>
+
+    <Style x:Key="StatusLabelStyle" TargetType="Label" BasedOn="{StaticResource LabelColorStyle}">
+        <Setter Property="Foreground" Value="WhiteSmoke"></Setter>
+    </Style>
 </ResourceDictionary>
