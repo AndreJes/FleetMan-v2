@@ -4,12 +4,76 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:FleetManApiController"
+        xmlns:logger="clr-namespace:APILoggerControl.UserControls;assembly=APILoggerControl"
         mc:Ignorable="d"
         Title="FleetMan API Manager" Style="{StaticResource MainWindowsStyle}">
     <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="1*"/>
-            <ColumnDefinition Width="3*" />
-        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="3*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="5*"/>
+        </Grid.RowDefinitions>
+
+        <!--#region Status-->
+        <Label Grid.Row="0" Style="{StaticResource MainLabelStyle}">
+            STATUS
+        </Label>
+
+        <Border Grid.Row="1" Style="{StaticResource MainBorderStyle}">
+            <Grid Style="{StaticResource MainPanelStyle}">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="2*" />
+                    <ColumnDefinition Width="8*" />
+                </Grid.ColumnDefinitions>
+
+                <Grid Grid.Column="0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="1*" />
+                        <RowDefinition Height="1*" />
+                    </Grid.RowDefinitions>
+
+                    <Button Grid.Row="0">
+                        Start
+                    </Button>
+                    <Button Grid.Row="1">
+                        Stop
+                    </Button>
+                </Grid>
+
+                <Grid Grid.Column="1">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="1*" />
+                        <RowDefinition Height="1*" />
+                        <RowDefinition Height="1*" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*" />
+                        <ColumnDefinition Width="1*" />
+                    </Grid.ColumnDefinitions>
+
+                    <StackPanel Grid.Row="0" Orientation="Horizontal">
+                        <Label Style="{StaticResource SubLabelStyle}">Serviços: </Label>
+                    </StackPanel>
+
+                    <StackPanel Grid.Row="1" Orientation="Horizontal">
+                        <Label Style="{StaticResource SubLabelStyle}">Conexão com BD: </Label>
+                    </StackPanel>
+                </Grid>
+            </Grid>
+        </Border>
+        <!--#endregion-->
+        <!--#region Logger Eventos-->
+        <Label Grid.Row="2" Style="{StaticResource MainLabelStyle}">
+            EVENTOS
+        </Label>
+
+        <Border Grid.Row="3" Style="{StaticResource MainBorderStyle}">
+            <Grid Style="{StaticResource MainPanelStyle}">
+                <logger:Logger x:Name="Logger" Style="{StaticResource MainLoggerStyle}">
+                </logger:Logger>
+            </Grid>
+        </Border>
+        <!--#endregion-->
     </Grid>
 </Window>

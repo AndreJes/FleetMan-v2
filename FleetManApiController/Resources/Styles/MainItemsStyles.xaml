@@ -1,0 +1,44 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:logger="clr-namespace:APILoggerControl.UserControls;assembly=APILoggerControl">
+    <Style x:Key="MainPanelStyle" TargetType="Grid">
+        <Setter Property="Background">
+            <Setter.Value>
+                <LinearGradientBrush StartPoint="0,1" EndPoint="1,0" MappingMode="RelativeToBoundingBox" SpreadMethod="Repeat">
+                    <GradientStop Color="#FF151515" Offset="0.075"/>
+                    <GradientStop Color="#FD191919" Offset="0.854"/>
+                </LinearGradientBrush>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="BorderColorStyle" TargetType="Border">
+        <Setter Property="BorderBrush" Value="WhiteSmoke"></Setter>
+        <Setter Property="BorderThickness" Value="1"></Setter>
+    </Style>
+    
+    <Style x:Key="MainBorderStyle" TargetType="Border" BasedOn="{StaticResource BorderColorStyle}">
+        <Setter Property="Margin" Value="10"></Setter>
+    </Style>
+
+    <Style x:Key="MainLoggerStyle" TargetType="logger:Logger">
+        <Setter Property="Foreground" Value="White"></Setter>
+    </Style>
+
+    <Style x:Key="LabelColorStyle" TargetType="Label">
+        <Setter Property="Foreground" Value="White"/>
+        <Setter Property="HorizontalAlignment" Value="Center"/>
+        <Setter Property="VerticalAlignment" Value="Center" />
+        <Setter Property="HorizontalContentAlignment" Value="Center" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+    </Style>
+
+    <Style x:Key="MainLabelStyle" TargetType="Label" BasedOn="{StaticResource LabelColorStyle}">
+        <Setter Property="FontSize" Value="24" />
+        <Setter Property="FontWeight" Value="DemiBold" />
+    </Style>
+
+    <Style x:Key="SubLabelStyle" TargetType="Label" BasedOn="{StaticResource LabelColorStyle}">
+        <Setter Property="FontWeight" Value="SemiBold"/>
+    </Style>
+</ResourceDictionary>
