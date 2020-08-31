@@ -5,7 +5,7 @@ VisualStudioVersion = 16.0.30413.136
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FleetManApiController", "FleetManApiController\FleetManApiController.csproj", "{B09C7AF6-6FB7-413E-B6B5-A0CECC037117}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "APILoggerControl", "..\APILoggerControl\APILoggerControl\APILoggerControl.csproj", "{6AFAE394-B411-4050-9F06-7C26421B5631}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpleWPFLogger", "..\SimpleWPFLogger\SimpleWPFLogger\SimpleWPFLogger.csproj", "{6AFAE394-B411-4050-9F06-7C26421B5631}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

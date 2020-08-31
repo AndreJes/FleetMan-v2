@@ -103,9 +103,9 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\APILoggerControl\APILoggerControl\APILoggerControl.csproj">
+    <ProjectReference Include="..\..\SimpleWPFLogger\SimpleWPFLogger\SimpleWPFLogger.csproj">
       <Project>{6afae394-b411-4050-9f06-7c26421b5631}</Project>
-      <Name>APILoggerControl</Name>
+      <Name>SimpleWPFLogger</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
