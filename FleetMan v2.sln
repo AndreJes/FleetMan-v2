@@ -7,6 +7,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FleetManApiController", "Fl
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpleWPFLogger", "..\SimpleWPFLogger\SimpleWPFLogger\SimpleWPFLogger.csproj", "{6AFAE394-B411-4050-9F06-7C26421B5631}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FleetManModel", "FleetManModel\FleetManModel.csproj", "{97B1187F-F17C-4A67-9081-1555397288FB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FleetManDAL", "FleetManDAL\FleetManDAL.csproj", "{98F494A2-0FFE-41A8-B86B-4172D41BD621}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +25,14 @@ Global
 		{6AFAE394-B411-4050-9F06-7C26421B5631}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6AFAE394-B411-4050-9F06-7C26421B5631}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6AFAE394-B411-4050-9F06-7C26421B5631}.Release|Any CPU.Build.0 = Release|Any CPU
+		{97B1187F-F17C-4A67-9081-1555397288FB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{97B1187F-F17C-4A67-9081-1555397288FB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{97B1187F-F17C-4A67-9081-1555397288FB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{97B1187F-F17C-4A67-9081-1555397288FB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{98F494A2-0FFE-41A8-B86B-4172D41BD621}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{98F494A2-0FFE-41A8-B86B-4172D41BD621}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{98F494A2-0FFE-41A8-B86B-4172D41BD621}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{98F494A2-0FFE-41A8-B86B-4172D41BD621}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
