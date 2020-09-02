@@ -7,7 +7,7 @@
         xmlns:logger="clr-namespace:SimpleWPFLogger.UserControls;assembly=APILoggerControl"
         xmlns:ucs="clr-namespace:FleetManApiController.UserControls"
         mc:Ignorable="d"
-        Title="FleetMan API Manager" Style="{StaticResource MainWindowsStyle}">
+        Title="FleetMan API Manager" Style="{StaticResource MainWindowsStyle}" Closing="Window_Closing">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="1*"/>
@@ -34,10 +34,10 @@
                         <RowDefinition Height="1*" />
                     </Grid.RowDefinitions>
 
-                    <Button Grid.Row="0" Style="{StaticResource StartBtnTemplateStyle}">
+                    <Button x:Name="StartServiceBtn" Click="StartServiceBtn_Click" Grid.Row="0" Style="{StaticResource StartBtnTemplateStyle}">
                         START
                     </Button>
-                    <Button Grid.Row="1" Style="{StaticResource StopBtnTemplateStyle}">
+                    <Button x:Name="StopServiceBtn" Click="StopService_Event" Grid.Row="1" Style="{StaticResource StopBtnTemplateStyle}">
                         STOP
                     </Button>
                 </Grid>
