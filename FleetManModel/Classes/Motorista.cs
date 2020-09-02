@@ -7,16 +7,14 @@ using System.Threading.Tasks;
 
 namespace FleetManModel.Classes
 {
-    public class Veiculo
+    public class Motorista
     {
         [Key]
-        public string Placa { get; set; }
-        public string Renavam { get; set; }
-        public string Chassi { get; set; }
-        public string Modelo { get; set; }
-        public string Ano { get; set; }
-        public string Marca { get; set; }
-
+        public string CPF { get; set; }
+        public string CNH { get; set; }
+        public string Nome { get; set; }
+        public string Email { get; set; }
+        public Endereco Endereco { get; set; }
         public bool Ativo { get; set; }
 
         public virtual Cliente Cliente { get; set; }
