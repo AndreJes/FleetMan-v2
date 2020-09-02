@@ -1,4 +1,7 @@
-﻿using System;
+﻿using FleetManApiController.Services;
+using SimpleWPFLogger.Enums;
+using SimpleWPFLogger.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,8 +26,15 @@ namespace FleetManApiController
         public MainWindow()
         {
             InitializeComponent();
-            ServiceStatusUC.ChangeStatus(false);
-            DBConnectionStatusUC.ChangeStatus(false);
+            Logger.PrintText(new Run("Iniciando aplicação..."), new Run(" --> "), new DateOptions(TextDecorationOptions.BOLD));
+            UpdateDBConnection();
+        }
+
+        private async void UpdateDBConnection()
+        {
+            Logger.PrintText(new Run("Checando conexão com o banco..."), new Run(" --> "), new DateOptions(TextDecorationOptions.BOLD));
+            bool connection = ConnectionManager.CheckDbConnection();
+            await DBConnectionStatusUC.ChangeStatus(connection);
         }
     }
 }
