@@ -21,6 +21,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <LangVersion>8.0</LangVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -29,6 +30,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <LangVersion>8.0</LangVersion>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="BouncyCastle.Crypto, Version=1.8.3.0, Culture=neutral, PublicKeyToken=0e99375e54769942">
@@ -111,6 +113,10 @@
     <Compile Include="Migrations\202009021541237_Initial-Model.Designer.cs">
       <DependentUpon>202009021541237_Initial-Model.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202009021726435_New-Indexes.cs" />
+    <Compile Include="Migrations\202009021726435_New-Indexes.Designer.cs">
+      <DependentUpon>202009021726435_New-Indexes.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -130,6 +136,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202009021541237_Initial-Model.resx">
       <DependentUpon>202009021541237_Initial-Model.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202009021726435_New-Indexes.resx">
+      <DependentUpon>202009021726435_New-Indexes.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
