@@ -21,14 +21,11 @@ namespace FleetManApiController.Configuration
         {
             HttpConfiguration config = new HttpConfiguration();
 
-            config.Routes.MapHttpRoute(name: "Default", routeTemplate: "API/{controller}");
+            config.Routes.MapHttpRoute(name: "Default", routeTemplate: "API/{controller}/{action}");
             config.MapHttpAttributeRoutes();
             config.Formatters.Clear();
             config.Formatters.Add(new JsonMediaTypeFormatter());
-            config.Formatters.JsonFormatter.SerializerSettings = new JsonSerializerSettings()
-            {
-                ContractResolver = new CamelCasePropertyNamesContractResolver()
-            };
+            config.Formatters.JsonFormatter.SerializerSettings = JsonConfig.DefaultSettings;
 
             appBuilder.UseCors(new CorsOptions());
 

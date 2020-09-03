@@ -97,7 +97,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Configuration\JsonConfig.cs" />
     <Compile Include="Configuration\OwinConfiguration.cs" />
+    <Compile Include="Controllers\ClienteAPIController.cs" />
     <Compile Include="Services\ConnectionManager.cs" />
     <Compile Include="Services\OwinService.cs" />
     <Compile Include="UserControls\StatusLabelUC.xaml.cs">
@@ -169,5 +171,6 @@
       <Name>FleetManModel</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

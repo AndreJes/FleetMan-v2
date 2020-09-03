@@ -15,10 +15,7 @@ namespace FleetManApiController.Services
             {
                 using FleetManContext context = new FleetManContext();
 
-                context.Database.Connection.Open();
-                context.Database.Connection.Close();
-
-                return true;
+                return context.Database.Exists();
             }
             catch (Exception)
             {

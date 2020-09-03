@@ -15,7 +15,7 @@ namespace FleetManDAL.DAOs
         {
         }
 
-        public async Task<IList<Cliente>> GetAllAsync()
+        public async Task<List<Cliente>> GetAllAsync()
         {
             try
             {
@@ -27,6 +27,7 @@ namespace FleetManDAL.DAOs
             {
                 throw ex;
             }
+
         }
 
         public async Task<Cliente> GetClienteAsync(string cnpj)
@@ -48,8 +49,22 @@ namespace FleetManDAL.DAOs
             try
             {
                 using FleetManContext context = new FleetManContext();
-
                 context.Clientes.Add(cliente);
+                await context.SaveChangesAsync();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public async Task UpdateCliente(Cliente cliente)
+        {
+            try
+            {
+                using FleetManContext context = new FleetManContext();
+                AttachItem(cliente, context);
+                context.Entry(cliente).State = EntityState.Modified;
                 await context.SaveChangesAsync();
             }
             catch (Exception ex)
@@ -66,7 +81,7 @@ namespace FleetManDAL.DAOs
 
                 Cliente cliente = await GetClienteAsync(cnpj);
 
-                if(cliente != null)
+                if (cliente != null)
                 {
                     context.Clientes.Remove(cliente);
                 }
@@ -74,6 +89,14 @@ namespace FleetManDAL.DAOs
             catch (Exception ex)
             {
                 throw ex;
+            }
+        }
+
+        public void AttachItem(Cliente cliente, FleetManContext context)
+        {
+            if (!context.Clientes.Local.Contains(cliente))
+            {
+                context.Clientes.Attach(cliente);
             }
         }
     }
