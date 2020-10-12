@@ -121,6 +121,10 @@
     <Compile Include="Migrations\202010121212432_DadosLogin.Designer.cs">
       <DependentUpon>202010121212432_DadosLogin.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202010121240583_SaltingLoginData.cs" />
+    <Compile Include="Migrations\202010121240583_SaltingLoginData.Designer.cs">
+      <DependentUpon>202010121240583_SaltingLoginData.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -146,6 +150,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202010121212432_DadosLogin.resx">
       <DependentUpon>202010121212432_DadosLogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202010121240583_SaltingLoginData.resx">
+      <DependentUpon>202010121240583_SaltingLoginData.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

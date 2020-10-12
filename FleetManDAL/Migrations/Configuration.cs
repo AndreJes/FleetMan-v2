@@ -22,6 +22,15 @@ namespace FleetManDAL.Migrations
             //  to avoid creating duplicate seed data.
             Endereco endpadrao = new Endereco() { Logradouro = "Rua um", Bairro = "Penha", Cep = "00000-000", Cidade = "São Paulo", Complemento = "", Numero = "100", UF = "SP" };
 
+            List<LoginData> logins = new List<LoginData>()
+            {
+                new LoginData(){Email="cliente1@gmail.com", Login="12345678900001", Password="123456789", Salt=""},
+                new LoginData(){Email="cliente2@gmail.com", Login="12345678900002", Password="123456789", Salt=""}
+            };
+
+            context.LoginDatas.AddOrUpdate(logins.ToArray());
+            context.SaveChanges();
+
             List<Cliente> clientes = new List<Cliente>()
             {
                 new Cliente() {Ativo = true, Nome = "Cliente 1", CNPJ="12345678900001", Endereco=endpadrao, Email="cliente1@gmail.com"},
@@ -53,10 +62,6 @@ namespace FleetManDAL.Migrations
             context.Motoristas.AddOrUpdate(motoristas.ToArray());
             context.SaveChanges();
 
-            List<LoginData> logins = new List<LoginData>()
-            {
-
-            };
         }
     }
 }

@@ -22,6 +22,7 @@ namespace FleetManDAL.Contexts
         public DbSet<Veiculo> Veiculos { get; set; }
         public DbSet<Motorista> Motoristas { get; set; }
         public DbSet<Cliente> Clientes { get; set; }
+        public DbSet<LoginData> LoginDatas { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
