@@ -83,8 +83,11 @@ namespace FleetManDAL.DAOs
 
                 if (cliente != null)
                 {
+                    AttachItem(cliente, context);
                     context.Clientes.Remove(cliente);
                 }
+
+                await context.SaveChangesAsync();
             }
             catch (Exception ex)
             {

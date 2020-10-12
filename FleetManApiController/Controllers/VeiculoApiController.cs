@@ -17,10 +17,9 @@ using System.Windows.Documents;
 
 namespace FleetManApiController.Controllers
 {
-    [Authorize(Roles = "Client")]
-    public class MotoristaAPIController : ApiController
+    public class VeiculoApiController : ApiController
     {
-        MotoristaDAO MotoristaDAO = new MotoristaDAO();
+        VeiculoDAO VeiculoDAO = new VeiculoDAO();
 
         Logger Logger = LoggerManager.GetInstance().Loggers["MainLogger"];
 
@@ -31,8 +30,8 @@ namespace FleetManApiController.Controllers
 
             try
             {
-                List<Motorista> motoristas = await MotoristaDAO.GetAllAsync(cnpj);
-                response.Content = new ObjectContent(typeof(List<Motorista>), motoristas, JsonConfig.DefaultJsonMediaType);
+                List<Veiculo> veiculos = await VeiculoDAO.GetAllAsync(cnpj);
+                response.Content = new ObjectContent(typeof(List<Veiculo>), veiculos, JsonConfig.DefaultJsonMediaType);
                 response.StatusCode = HttpStatusCode.OK;
             }
             catch (Exception ex)
@@ -47,14 +46,14 @@ namespace FleetManApiController.Controllers
         }
 
         [HttpGet]
-        public async Task<HttpResponseMessage> GetMotorista(string cpf)
+        public async Task<HttpResponseMessage> GetVeiculo(string placa)
         {
             HttpResponseMessage response = new HttpResponseMessage();
 
             try
             {
-                Motorista motorista = await MotoristaDAO.GetMotoristaAsync(cpf);
-                response.Content = new ObjectContent(typeof(Motorista), motorista, JsonConfig.DefaultJsonMediaType);
+                Veiculo veiculo = await VeiculoDAO.GetVeiculoAsync(placa);
+                response.Content = new ObjectContent(typeof(Veiculo), veiculo, JsonConfig.DefaultJsonMediaType);
                 response.StatusCode = HttpStatusCode.OK;
             }
             catch (Exception ex)
@@ -69,12 +68,12 @@ namespace FleetManApiController.Controllers
         }
 
         [HttpPost]
-        public async Task<HttpResponseMessage> AddMotorista(Motorista motorista)
+        public async Task<HttpResponseMessage> AddVeiculo(Veiculo veiculo)
         {
             HttpResponseMessage response = new HttpResponseMessage();
             try
             {
-                await MotoristaDAO.AddMotoristaAsync(motorista);
+                await VeiculoDAO.AddVeiculoAsync(veiculo);
                 response.StatusCode = HttpStatusCode.OK;
             }
             catch (Exception ex)
@@ -89,12 +88,12 @@ namespace FleetManApiController.Controllers
         }
 
         [HttpPost]
-        public async Task<HttpResponseMessage> UpdateMotorista(Motorista motorista)
+        public async Task<HttpResponseMessage> UpdateVeiculo(Veiculo veiculo)
         {
             HttpResponseMessage response = new HttpResponseMessage();
             try
             {
-                await MotoristaDAO.UpdateMotoristaAsync(motorista);
+                await VeiculoDAO.UpdateVeiculoAsync(veiculo);
                 response.StatusCode = HttpStatusCode.OK;
             }
             catch (Exception ex)
@@ -109,12 +108,12 @@ namespace FleetManApiController.Controllers
         }
 
         [HttpPost]
-        public async Task<HttpResponseMessage> RemoveMotorista(string cpf)
+        public async Task<HttpResponseMessage> RemoveVeiculo(string placa)
         {
             HttpResponseMessage response = new HttpResponseMessage();
             try
             {
-                await MotoristaDAO.RemoveMotoristaAsync(cpf);
+                await VeiculoDAO.RemoveVeiculoAsync(placa);
                 response.StatusCode = HttpStatusCode.OK;
             }
             catch (Exception ex)

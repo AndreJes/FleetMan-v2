@@ -68,8 +68,11 @@ namespace FleetManDAL.DAOs
 
                 if (motorista != null)
                 {
+                    AttachItem(motorista, context);
                     context.Motoristas.Remove(motorista);
                 }
+
+                await context.SaveChangesAsync();
             }
             catch (Exception ex)
             {
