@@ -109,6 +109,7 @@
     <Compile Include="Controllers\ClienteAPIController.cs" />
     <Compile Include="Services\ConnectionManager.cs" />
     <Compile Include="Services\FleetManSecurityAccess.cs" />
+    <Compile Include="Services\LoggerManager.cs" />
     <Compile Include="Services\OwinService.cs" />
     <Compile Include="UserControls\StatusLabelUC.xaml.cs">
       <DependentUpon>StatusLabelUC.xaml</DependentUpon>

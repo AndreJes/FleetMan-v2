@@ -1,6 +1,7 @@
 ﻿using FleetManApiController.Services;
 using SimpleWPFLogger.Enums;
 using SimpleWPFLogger.Model;
+using SimpleWPFLogger.UserControls;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,11 +24,20 @@ namespace FleetManApiController
     /// </summary>
     public partial class MainWindow : Window
     {
+        LoggerManager LoggerManager = null;
+
         public MainWindow()
         {
             InitializeComponent();
+            
+            LoggerManager = LoggerManager.GetInstance();
+
+            LoggerManager.AddLogger("MainLogger", this.Logger);
+
             Logger.PrintText(new Run("Iniciando aplicação..."), new Run(" --> "), new DateOptions(TextDecorationOptions.BOLD));
+            
             UpdateDBConnection();
+            
             ServiceStatusUC.ChangeStatus(false);
         }
 
