@@ -16,7 +16,7 @@ namespace FleetManApiController.Services
         {
             try
             {
-                string serviceURL = @"http://*:54321/";
+                string serviceURL = @"http://localhost:54321/";
 
                 service = WebApp.Start<OwinConfiguration>(serviceURL);
 

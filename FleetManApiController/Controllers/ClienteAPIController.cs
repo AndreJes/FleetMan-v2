@@ -13,6 +13,7 @@ using System.Web.Http;
 
 namespace FleetManApiController.Controllers
 {
+    [Authorize]
     public class ClienteAPIController : ApiController
     {
         ClienteDAO clienteDAO = new ClienteDAO();
@@ -32,7 +33,7 @@ namespace FleetManApiController.Controllers
             catch (Exception ex)
             {
                 response.StatusCode = System.Net.HttpStatusCode.InternalServerError;
-                response.Content = new ObjectContent(typeof(Exception), ex, new JsonMediaTypeFormatter());
+                response.Content = new ObjectContent(typeof(Exception), ex, JsonConfig.DefaultJsonMediaType);
             }
 
             return response;

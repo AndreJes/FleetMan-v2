@@ -55,6 +55,7 @@
     <Compile Include="Classes\LoginData.cs" />
     <Compile Include="Classes\Motorista.cs" />
     <Compile Include="Classes\Veiculo.cs" />
+    <Compile Include="Helpers\FleetManHash.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

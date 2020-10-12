@@ -1,6 +1,7 @@
 namespace FleetManDAL.Migrations
 {
     using FleetManModel.Classes;
+    using FleetManModel.Security;
     using System;
     using System.Collections.Generic;
     using System.Data.Entity;
@@ -22,10 +23,15 @@ namespace FleetManDAL.Migrations
             //  to avoid creating duplicate seed data.
             Endereco endpadrao = new Endereco() { Logradouro = "Rua um", Bairro = "Penha", Cep = "00000-000", Cidade = "São Paulo", Complemento = "", Numero = "100", UF = "SP" };
 
+            var hasher = new FleetManHash();
+
+            string salt1 = hasher.GetSalt();
+            string salt2 = hasher.GetSalt();
+
             List<LoginData> logins = new List<LoginData>()
             {
-                new LoginData(){Email="cliente1@gmail.com", Login="12345678900001", Password="123456789", Salt=""},
-                new LoginData(){Email="cliente2@gmail.com", Login="12345678900002", Password="123456789", Salt=""}
+                new LoginData(){Email="cliente1@gmail.com", Login="12345678900001", Password=hasher.GetHashedPassword("123456789", salt1), Salt=salt1},
+                new LoginData(){Email="cliente2@gmail.com", Login="12345678900002", Password=hasher.GetHashedPassword("123456789", salt2), Salt=salt2}
             };
 
             context.LoginDatas.AddOrUpdate(logins.ToArray());

@@ -55,7 +55,7 @@ namespace FleetManApiController
             await ServiceStatusUC.ChangeStatus(status);
         }
 
-        private async void StopService(bool logerror)
+        private async void StopService(bool logerror = true)
         {
             bool status;
             try
@@ -82,7 +82,7 @@ namespace FleetManApiController
 
         private void StopService_Event(object sender, RoutedEventArgs e)
         {
-            StopService(true);
+            StopService();
         }
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
