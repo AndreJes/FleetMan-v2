@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Security.Permissions;
 using System.Text;
@@ -16,6 +17,10 @@ namespace FleetManModel.Classes
         public Endereco Endereco { get; set; }
 
         public bool Ativo { get; set; }
+
+        [ForeignKey("LoginData")]
+        public string Email { get; set; }
+        public virtual LoginData LoginData { get; set; }
 
         public virtual List<Veiculo> Veiculos { get; set; }
         public virtual List<Motorista> Motoristas { get; set; }

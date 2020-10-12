@@ -117,6 +117,10 @@
     <Compile Include="Migrations\202009021726435_New-Indexes.Designer.cs">
       <DependentUpon>202009021726435_New-Indexes.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202010121212432_DadosLogin.cs" />
+    <Compile Include="Migrations\202010121212432_DadosLogin.Designer.cs">
+      <DependentUpon>202010121212432_DadosLogin.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -139,6 +143,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202009021726435_New-Indexes.resx">
       <DependentUpon>202009021726435_New-Indexes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202010121212432_DadosLogin.resx">
+      <DependentUpon>202010121212432_DadosLogin.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -24,8 +24,8 @@ namespace FleetManDAL.Migrations
 
             List<Cliente> clientes = new List<Cliente>()
             {
-                new Cliente() {Ativo = true, Nome = "Cliente 1", CNPJ="12345678900001", Endereco=endpadrao},
-                new Cliente() {Ativo = false, Nome = "Cliente 2", CNPJ="12345678900002", Endereco=endpadrao}
+                new Cliente() {Ativo = true, Nome = "Cliente 1", CNPJ="12345678900001", Endereco=endpadrao, Email="cliente1@gmail.com"},
+                new Cliente() {Ativo = false, Nome = "Cliente 2", CNPJ="12345678900002", Endereco=endpadrao, Email="cliente2@gmail.com"}
             };
 
             context.Clientes.AddOrUpdate(clientes.ToArray());
@@ -52,6 +52,11 @@ namespace FleetManDAL.Migrations
 
             context.Motoristas.AddOrUpdate(motoristas.ToArray());
             context.SaveChanges();
+
+            List<LoginData> logins = new List<LoginData>()
+            {
+
+            };
         }
     }
 }
