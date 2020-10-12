@@ -58,7 +58,7 @@ namespace FleetManDAL.DAOs
             }
         }
 
-        public async Task UpdateCliente(Cliente cliente)
+        public async Task UpdateClienteAsync(Cliente cliente)
         {
             try
             {

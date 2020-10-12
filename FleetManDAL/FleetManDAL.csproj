@@ -125,6 +125,10 @@
     <Compile Include="Migrations\202010121240583_SaltingLoginData.Designer.cs">
       <DependentUpon>202010121240583_SaltingLoginData.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202010121758321_ForeignKeyMotoristaVeiculo_Cliente.cs" />
+    <Compile Include="Migrations\202010121758321_ForeignKeyMotoristaVeiculo_Cliente.Designer.cs">
+      <DependentUpon>202010121758321_ForeignKeyMotoristaVeiculo_Cliente.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -153,6 +157,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202010121240583_SaltingLoginData.resx">
       <DependentUpon>202010121240583_SaltingLoginData.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202010121758321_ForeignKeyMotoristaVeiculo_Cliente.resx">
+      <DependentUpon>202010121758321_ForeignKeyMotoristaVeiculo_Cliente.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

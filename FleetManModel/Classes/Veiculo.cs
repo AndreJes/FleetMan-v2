@@ -22,7 +22,8 @@ namespace FleetManModel.Classes
 
         public bool Ativo { get; set; }
 
+        [ForeignKey("Cliente")]
+        public virtual string Cliente_CNPJ { get; set; }
         public virtual Cliente Cliente { get; set; }
-
     }
 }

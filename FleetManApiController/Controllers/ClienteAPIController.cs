@@ -27,6 +27,7 @@ namespace FleetManApiController.Controllers
         Logger Logger = LoggerManager.GetInstance().Loggers["MainLogger"];
 
         [HttpGet]
+        [Authorize(Roles = "Admin")]
         public async Task<HttpResponseMessage> GetAll()
         {
 
@@ -87,7 +88,7 @@ namespace FleetManApiController.Controllers
             HttpResponseMessage response = new HttpResponseMessage();
             try
             {
-                await clienteDAO.UpdateCliente(cliente);
+                await clienteDAO.UpdateClienteAsync(cliente);
             }
             catch (Exception ex)
             {
@@ -101,6 +102,7 @@ namespace FleetManApiController.Controllers
         }
 
         [HttpPost]
+        [Authorize(Roles = "Admin")]
         public async Task<HttpResponseMessage> RemoveClient(string cnpj)
         {
             HttpResponseMessage response = new HttpResponseMessage();
