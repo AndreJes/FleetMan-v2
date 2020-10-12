@@ -1,15 +1,21 @@
 ﻿using FleetManApiController.Configuration;
+using FleetManApiController.Services;
 using FleetManDAL.DAOs;
 using FleetManModel.Classes;
 using Newtonsoft.Json;
+using SimpleWPFLogger.Enums;
+using SimpleWPFLogger.Model;
+using SimpleWPFLogger.UserControls;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Net.Http;
 using System.Net.Http.Formatting;
 using System.Text;
 using System.Threading.Tasks;
 using System.Web.Http;
+using System.Windows.Documents;
 
 namespace FleetManApiController.Controllers
 {
@@ -18,9 +24,12 @@ namespace FleetManApiController.Controllers
     {
         ClienteDAO clienteDAO = new ClienteDAO();
 
+        Logger Logger = LoggerManager.GetInstance().Loggers["MainLogger"];
+
         [HttpGet]
         public async Task<HttpResponseMessage> GetAll()
         {
+
             HttpResponseMessage response = new HttpResponseMessage();
 
             try
@@ -36,8 +45,9 @@ namespace FleetManApiController.Controllers
                 response.Content = new ObjectContent(typeof(Exception), ex, JsonConfig.DefaultJsonMediaType);
             }
 
-            return response;
+            ApiLog(response.StatusCode);
 
+            return response;
         }
 
         [HttpGet]
@@ -66,6 +76,8 @@ namespace FleetManApiController.Controllers
                 response.Content = new ObjectContent(typeof(Exception), ex, new JsonMediaTypeFormatter());
             }
 
+            ApiLog(response.StatusCode);
+
             return response;
         }
 
@@ -82,6 +94,9 @@ namespace FleetManApiController.Controllers
                 response.StatusCode = System.Net.HttpStatusCode.InternalServerError;
                 response.Content = new ObjectContent(typeof(Exception), ex, new JsonMediaTypeFormatter());
             }
+
+            ApiLog(response.StatusCode);
+
             return response;
         }
 
@@ -99,7 +114,21 @@ namespace FleetManApiController.Controllers
                 response.StatusCode = System.Net.HttpStatusCode.InternalServerError;
                 response.Content = new ObjectContent(typeof(Exception), ex, new JsonMediaTypeFormatter());
             }
+
+            ApiLog(response.StatusCode);
+
             return response;
+        }
+
+        private void ApiLog(HttpStatusCode statusCode)
+        {
+            Logger.Dispatcher.Invoke(() => Logger.PrintText(new Run(
+                    Request.Method + " - " + Request.RequestUri + Environment.NewLine
+                    + "\t\t\t  Host: " + Request.Headers.Host + Environment.NewLine
+                    + "\t\t\t  Status Code: " + statusCode.ToString("G"))
+                , new Run(" --> ")
+                , new DateOptions(TextDecorationOptions.BOLD))
+            );
         }
     }
 }
