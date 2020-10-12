@@ -82,6 +82,26 @@ namespace FleetManApiController.Controllers
             return response;
         }
 
+
+        [HttpPost]
+        public async Task<HttpResponseMessage> AddClient(Cliente cliente)
+        {
+            HttpResponseMessage response = new HttpResponseMessage();
+            try
+            {
+                await clienteDAO.AddClienteAsync(cliente);
+            }
+            catch (Exception ex)
+            {
+                response.StatusCode = System.Net.HttpStatusCode.InternalServerError;
+                response.Content = new ObjectContent(typeof(Exception), ex, new JsonMediaTypeFormatter());
+            }
+
+            ApiLog(response.StatusCode);
+
+            return response;
+        }
+
         [HttpPost]
         public async Task<HttpResponseMessage> UpdateClient(Cliente cliente)
         {
