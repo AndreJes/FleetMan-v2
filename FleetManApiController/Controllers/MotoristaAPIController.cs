@@ -17,7 +17,7 @@ using System.Windows.Documents;
 
 namespace FleetManApiController.Controllers
 {
-    [Authorize(Roles = "Client")]
+    [Authorize]
     public class MotoristaAPIController : ApiController
     {
         MotoristaDAO MotoristaDAO = new MotoristaDAO();

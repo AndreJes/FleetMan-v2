@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -16,6 +17,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Windows.Threading;
 
 namespace FleetManApiController
 {
@@ -26,26 +28,31 @@ namespace FleetManApiController
     {
         LoggerManager LoggerManager = null;
 
+        DispatcherTimer DbTimer = null;
+
         public MainWindow()
         {
             InitializeComponent();
-            
+
             LoggerManager = LoggerManager.GetInstance();
 
             LoggerManager.AddLogger("MainLogger", this.Logger);
 
             Logger.PrintText(new Run("Iniciando aplicação..."), new Run(" --> "), new DateOptions(TextDecorationOptions.BOLD));
-            
-            UpdateDBConnection();
-            
+
+            BeginUpdateDBConnectionTimer();
+
             ServiceStatusUC.ChangeStatus(false);
         }
 
-        private async void UpdateDBConnection()
+        private async void BeginUpdateDBConnectionTimer()
         {
+            DbTimer = new DispatcherTimer();
+            DbTimer.Interval = TimeSpan.FromMinutes(1);
+            DbTimer.Tick += CheckDbConnection_Event;
+            DbTimer.Start();
             Logger.PrintText(new Run("Checando conexão com o banco..."), new Run(" --> "), new DateOptions(TextDecorationOptions.BOLD));
-            bool connection = ConnectionManager.CheckDbConnection();
-            await DBConnectionStatusUC.ChangeStatus(connection);
+            await CheckDbConnection();
         }
 
         private async void StartService()
@@ -67,22 +74,27 @@ namespace FleetManApiController
 
         private async void StopService(bool logerror = true)
         {
-            bool status;
             try
             {
                 Logger.PrintText(new Run("Finalizando serviço..."), new Run(" --> "), new DateOptions(TextDecorationOptions.BOLD));
-                status = OwinService.Stop();
+                bool status = OwinService.Stop();
+                DbTimer.Stop();
+                await ServiceStatusUC.ChangeStatus(!status);
             }
             catch (Exception ex)
             {
-                status = false;
                 if (logerror)
                 {
                     MessageBox.Show(ex.ToString(), "Erro ao finalizar serviço", MessageBoxButton.OK, MessageBoxImage.Error);
                     Logger.PrintText(new Run("Erro na finalização do serviço..."), new Run(" --> "), new DateOptions(TextDecorationOptions.BOLD));
                 }
             }
-            await ServiceStatusUC.ChangeStatus(!status);
+        }
+
+        private async Task CheckDbConnection()
+        {
+            bool connection = ConnectionManager.CheckDbConnection();
+            await DBConnectionStatusUC.ChangeStatus(connection);
         }
 
         private void StartServiceBtn_Click(object sender, RoutedEventArgs e)
@@ -93,6 +105,11 @@ namespace FleetManApiController
         private void StopService_Event(object sender, RoutedEventArgs e)
         {
             StopService();
+        }
+
+        private async void CheckDbConnection_Event(object sender, EventArgs e)
+        {
+            await CheckDbConnection();
         }
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)

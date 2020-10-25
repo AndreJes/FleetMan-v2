@@ -26,6 +26,7 @@ namespace FleetManApiController.UserControls
         private Color _redcolor = Color.FromArgb(255, 255, 30, 30);
 
         public string Description { get; set; }
+        public bool CurrentStatus { get; private set; }
 
         public StatusLabelUC()
         {
@@ -49,6 +50,7 @@ namespace FleetManApiController.UserControls
                     StateLabel.Content = "Inativo";
                     StatusEllipse.Fill = new SolidColorBrush(_redcolor);
                 }
+                CurrentStatus = active;
             });
         }
 
