@@ -57,19 +57,17 @@ namespace FleetManApiController
 
         private async void StartService()
         {
-            bool status;
             try
             {
                 Logger.PrintText(new Run("iniciando serviço..."), new Run(" --> "), new DateOptions(TextDecorationOptions.BOLD));
-                status = OwinService.Start();
+                bool status = OwinService.Start();
+                await ServiceStatusUC.ChangeStatus(status);
             }
             catch (Exception ex)
             {
-                status = false;
                 MessageBox.Show(ex.ToString(), "Erro ao iniciar serviço", MessageBoxButton.OK, MessageBoxImage.Error);
                 Logger.PrintText(new Run("Erro na inicialização do serviço..."), new Run(" --> "), new DateOptions(TextDecorationOptions.BOLD));
             }
-            await ServiceStatusUC.ChangeStatus(status);
         }
 
         private async void StopService(bool logerror = true)
