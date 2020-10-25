@@ -59,14 +59,15 @@ namespace FleetManApiController
         {
             try
             {
-                Logger.PrintText(new Run("iniciando serviço..."), new Run(" --> "), new DateOptions(TextDecorationOptions.BOLD));
+                Logger.PrintText(new Run("Iniciando serviço da API Web..."), new Run(" --> "), new DateOptions(TextDecorationOptions.BOLD));
                 bool status = OwinService.Start();
                 await ServiceStatusUC.ChangeStatus(status);
+                Logger.PrintText(new Run("Serviço da API Web inicializado..."), new Run(" --> "), new DateOptions(TextDecorationOptions.BOLD));
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.ToString(), "Erro ao iniciar serviço", MessageBoxButton.OK, MessageBoxImage.Error);
-                Logger.PrintText(new Run("Erro na inicialização do serviço..."), new Run(" --> "), new DateOptions(TextDecorationOptions.BOLD));
+                Logger.PrintText(new Run("Erro na inicialização serviço da API Web..."), new Run(" --> "), new DateOptions(TextDecorationOptions.BOLD));
             }
         }
 
