@@ -338,3 +338,8 @@ ASALocalRun/
 
 # BeatPulse healthcheck temp database
 healthchecksdb
+
+*_i.h
+
+# Microsoft Azure ApplicationInsights config file
+ApplicationInsights.config
