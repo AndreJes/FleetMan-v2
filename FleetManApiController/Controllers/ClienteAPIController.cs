@@ -84,6 +84,7 @@ namespace FleetManApiController.Controllers
 
 
         [HttpPost]
+        [Authorize(Roles = "Admin")]
         public async Task<HttpResponseMessage> AddClient(Cliente cliente)
         {
             HttpResponseMessage response = new HttpResponseMessage();

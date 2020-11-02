@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FleetManDAL", "FleetManDAL\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FleetManServices", "FleetManServices\FleetManServices.csproj", "{05D10594-7CB6-4076-B161-6D76E838A9E7}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FleetManWebApp", "FleetManWebApp\FleetManWebApp.csproj", "{60B7CA1F-82B5-4508-8073-D08C29CC3B1B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{05D10594-7CB6-4076-B161-6D76E838A9E7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{05D10594-7CB6-4076-B161-6D76E838A9E7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{05D10594-7CB6-4076-B161-6D76E838A9E7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{60B7CA1F-82B5-4508-8073-D08C29CC3B1B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{60B7CA1F-82B5-4508-8073-D08C29CC3B1B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{60B7CA1F-82B5-4508-8073-D08C29CC3B1B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{60B7CA1F-82B5-4508-8073-D08C29CC3B1B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

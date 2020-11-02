@@ -46,7 +46,7 @@ namespace FleetManApiController.Configuration
             }
             catch (Exception e)
             {
-                throw;
+                throw e;
             }
         }
     }

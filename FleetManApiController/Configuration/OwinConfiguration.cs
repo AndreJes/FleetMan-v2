@@ -46,10 +46,9 @@ namespace FleetManApiController.Configuration
             {
                 AllowInsecureHttp = true,
                 TokenEndpointPath = new PathString("/token"),
-                AccessTokenExpireTimeSpan = TimeSpan.FromHours(24),
+                AccessTokenExpireTimeSpan = TimeSpan.FromHours(8),
                 Provider = new CustomAccessTokenProvider()
             };
-
             app.UseOAuthAuthorizationServer(serverOptions);
             app.UseOAuthBearerAuthentication(new OAuthBearerAuthenticationOptions());
         }
