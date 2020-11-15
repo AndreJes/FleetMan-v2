@@ -24,9 +24,16 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Remove="FleetManApp\src\app\model\auth-token.ts" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Folder Include="Controllers\" />
-    <Folder Include="FleetManApp\src\resources\css\" />
     <Folder Include="FleetManApp\src\resources\imgs\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <TypeScriptCompile Include="FleetManApp\src\app\model\auth-token.ts" />
   </ItemGroup>
 
   <Target Name="DebugEnsureNodeEnv" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('$(SpaRoot)node_modules') ">

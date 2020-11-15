@@ -1,10 +1,12 @@
 using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Cors.Infrastructure;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.SpaServices.AngularCli;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using System;
 
 namespace FleetManWebApp
 {
@@ -21,6 +23,16 @@ namespace FleetManWebApp
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
+
+            services.AddCors(options =>
+            {
+                options.AddDefaultPolicy(builder => builder.SetIsOriginAllowed(_ => true)
+                    .SetIsOriginAllowedToAllowWildcardSubdomains()
+                    .AllowAnyHeader()
+                    .AllowAnyMethod()
+                    .AllowCredentials());
+            });
+
             // In production, the Angular files will be served from this directory
             services.AddSpaStaticFiles(configuration =>
             {
@@ -41,6 +53,8 @@ namespace FleetManWebApp
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
+
+            app.UseCors();
 
             app.UseHttpsRedirection();
             app.UseStaticFiles();
@@ -65,10 +79,21 @@ namespace FleetManWebApp
 
                 spa.Options.SourcePath = "FleetManApp";
 
+                spa.Options.StartupTimeout = TimeSpan.FromSeconds(300);
+
+                spa.ApplicationBuilder.UseCors(builder => builder
+                    .SetIsOriginAllowed(_ => true)
+                    .SetIsOriginAllowedToAllowWildcardSubdomains()
+                    .AllowAnyHeader()
+                    .AllowAnyMethod()
+                    .AllowCredentials()
+                );
+
                 if (env.IsDevelopment())
                 {
-                    spa.UseAngularCliServer(npmScript: "start --verbose");
+                    spa.UseAngularCliServer(npmScript: "start");
                 }
+
             });
         }
     }

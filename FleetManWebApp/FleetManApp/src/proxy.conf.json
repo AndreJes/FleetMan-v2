@@ -1,0 +1,11 @@
+{
+  "/data/*": {
+    "target": "http://localhost:54321",
+    "secure": false,
+    "logLevel": "debug",
+    "changeOrigin": true,
+    "pathRewrite": {
+      "^/data": ""
+    }
+  }
+}

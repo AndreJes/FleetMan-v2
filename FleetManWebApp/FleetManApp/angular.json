@@ -26,7 +26,10 @@
             "styles": [
               "src/styles.css"
             ],
-            "scripts": []
+            "scripts": [
+              "src/resources/bootstrap/js/jquery.js",
+              "src/resources/bootstrap/js/bootstrap.js"
+            ]
           },
           "configurations": {
             "production": {
@@ -62,7 +65,8 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "FleetManApp:build"
+            "browserTarget": "FleetManApp:build",
+            "proxyConfig": "src/proxy.conf.json"
           },
           "configurations": {
             "production": {
