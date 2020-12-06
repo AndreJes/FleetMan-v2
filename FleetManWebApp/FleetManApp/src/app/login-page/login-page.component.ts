@@ -23,6 +23,9 @@ export class LoginPageComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    if (this.loginService.Status().code === 1) {
+
+    }
   }
 
   async logIn(loginData) {
@@ -34,6 +37,15 @@ export class LoginPageComponent implements OnInit {
         console.info("LoggedIn: " + loggedIn);
       });
 
+    let status = this.loginService.Status();
+
+    console.info("Login status code: " + status.code)
+    console.info("Login status message: " + status.message)
+
+    if (status.code == 1) {
+      //To do: Adicionar redirecionamento para pagina inicial.
+      
+    }
   }
 
 }
