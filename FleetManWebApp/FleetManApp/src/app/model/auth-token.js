@@ -2,12 +2,13 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.AuthToken = void 0;
 var AuthToken = /** @class */ (function () {
-    function AuthToken(token, expires_in) {
+    function AuthToken(token, expires_in, create_on) {
         this.token = token;
-        this.expires_in = expires_in;
-        this.created_on = new Date();
+        //converts given seconds to miliseconds
+        this.expires_in = expires_in * 1000;
+        this.created_on = create_on ? create_on : new Date();
     }
-    AuthToken.prototype.TokenExpired = function () {
+    AuthToken.prototype.Expired = function () {
         try {
             var current_time = new Date();
             var limit = this.created_on.getTime() + this.expires_in;
@@ -19,10 +20,13 @@ var AuthToken = /** @class */ (function () {
             }
         }
         catch (e) {
-            console.error("[tokenExpired] Erro ao obter informa\u00E7\u00E3o de token expirado:");
+            console.error("Erro ao obter informa\u00E7\u00E3o de token expirado:");
             console.error("" + e);
             throw e;
         }
+    };
+    AuthToken.fromSession = function (session_token) {
+        return new this(session_token.token, session_token.expires_in / 1000, new Date(session_token.created_on));
     };
     return AuthToken;
 }());
