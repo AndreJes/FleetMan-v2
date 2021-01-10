@@ -1,22 +1,24 @@
-<div class="container">
-  <form [formGroup]="loginForm" (ngSubmit)="logIn(loginForm.value)">
-    <div class="card offset-3 w-50">
-      <div class="card-header bg-light text-center">
-        <h1 class="card-title">Login</h1>
-      </div>
-      <div class="card-body">
-        <div class="form-group">
-          <label for="email">Endereço e-mail: </label>
-          <input id="email" formControlName="email" class="form-control" type="email" placeholder="exemplo@exemplo.com" />
+<div class="container vertical-container">
+  <div class="center-align">
+    <form [formGroup]="loginForm" (ngSubmit)="logIn(loginForm.value)">
+      <div class="card col-12">
+        <div class="card-header bg-light text-center">
+          <h1 class="card-title">Login</h1>
         </div>
-        <div class="form-group">
-          <label for="email">Senha: </label>
-          <input id="password" formControlName="password" class="form-control" type="password" placeholder="Senha" />
+        <div class="card-body">
+          <div class="form-group">
+            <label for="email">Endereço e-mail: </label>
+            <input id="email" formControlName="email" class="form-control" type="email" placeholder="exemplo@exemplo.com" />
+          </div>
+          <div class="form-group">
+            <label for="email">Senha: </label>
+            <input id="password" formControlName="password" class="form-control" type="password" placeholder="Senha" />
+          </div>
+        </div>
+        <div class="card-footer bg-light">
+          <button class="btn btn-success text-center offset-1 col-10" type="submit"><strong>Acessar Sistema</strong></button>
         </div>
       </div>
-      <div class="card-footer bg-light">
-        <button class="btn btn-success text-center offset-1 col-10" type="submit"><strong>Acessar Sistema</strong></button>
-      </div>
-    </div>
-  </form>
+    </form>
+  </div>
 </div>

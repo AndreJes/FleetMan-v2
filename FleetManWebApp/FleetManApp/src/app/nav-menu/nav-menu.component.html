@@ -1,1 +1,13 @@
-<p>nav-menu works!</p>
+<nav>
+  <ul ngbNav #nav="ngbNav" [(activeId)]="active" class="nav-pills" orientation="vertical">
+    <li [ngbNavItem]="1">
+      <a ngbNavLink routerLink="/client">Meus Dados</a>
+    </li>
+    <li [ngbNavItem]="2">
+      <a ngbNavLink>Link 2</a>
+    </li>
+    <li [ngbNavItem]="3">
+      <a ngbNavLink>Link 3</a>
+    </li>
+  </ul>
+</nav>
