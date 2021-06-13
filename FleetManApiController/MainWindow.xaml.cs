@@ -40,19 +40,9 @@ namespace FleetManApiController
 
             Logger.PrintText(new Run("Iniciando aplicação..."), new Run(" --> "), new DateOptions(TextDecorationOptions.BOLD));
 
-            BeginUpdateDBConnectionTimer();
+            CheckDbConnection();
 
             ServiceStatusUC.ChangeStatus(false);
-        }
-
-        private async void BeginUpdateDBConnectionTimer()
-        {
-            DbTimer = new DispatcherTimer();
-            DbTimer.Interval = TimeSpan.FromMinutes(1);
-            DbTimer.Tick += CheckDbConnection_Event;
-            DbTimer.Start();
-            Logger.PrintText(new Run("Checando conexão com o banco..."), new Run(" --> "), new DateOptions(TextDecorationOptions.BOLD));
-            await CheckDbConnection();
         }
 
         private async void StartService()
@@ -92,6 +82,7 @@ namespace FleetManApiController
 
         private async Task CheckDbConnection()
         {
+            Logger.PrintText(new Run("Checando conexão com o banco..."), new Run(" --> "), new DateOptions(TextDecorationOptions.BOLD));
             bool connection = ConnectionManager.CheckDbConnection();
             await DBConnectionStatusUC.ChangeStatus(connection);
         }
@@ -114,6 +105,11 @@ namespace FleetManApiController
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
             StopService(false);
+        }
+
+        private async void RefreshDbConnection_Click(object sender, RoutedEventArgs e)
+        {
+            await CheckDbConnection();
         }
     }
 }

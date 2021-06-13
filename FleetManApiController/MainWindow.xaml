@@ -50,11 +50,14 @@
                     </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="1*" />
-                        <ColumnDefinition Width="1*" />
                     </Grid.ColumnDefinitions>
 
-                    <ucs:StatusLabelUC x:Name="ServiceStatusUC" Description="Serviços: " Grid.Row="0"></ucs:StatusLabelUC>
-                    <ucs:StatusLabelUC x:Name="DBConnectionStatusUC" Description="Conexão c/ BD: " Grid.Row="1"></ucs:StatusLabelUC>
+                    <ucs:StatusLabelUC x:Name="ServiceStatusUC" Description="Serviços" Grid.Row="0"></ucs:StatusLabelUC>
+
+                    <DockPanel Grid.Row="1" LastChildFill="True">
+                        <Button x:Name="RefreshDbConnection" DockPanel.Dock="Right" Margin="2" Click="RefreshDbConnection_Click">Update</Button>
+                        <ucs:StatusLabelUC DockPanel.Dock="Right" x:Name="DBConnectionStatusUC" Description="Conexão c/ BD"></ucs:StatusLabelUC>
+                    </DockPanel>
                 </Grid>
             </Grid>
         </Border>

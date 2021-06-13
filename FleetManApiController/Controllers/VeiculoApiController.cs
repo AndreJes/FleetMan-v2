@@ -18,7 +18,7 @@ using System.Windows.Documents;
 namespace FleetManApiController.Controllers
 {
     [Authorize]
-    public class VeiculoApiController : ApiController
+    public class VeiculoAPIController : ApiController
     {
         VeiculoDAO VeiculoDAO = new VeiculoDAO();
 

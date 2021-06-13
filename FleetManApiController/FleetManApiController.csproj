@@ -108,7 +108,7 @@
     <Compile Include="Configuration\OwinConfiguration.cs" />
     <Compile Include="Controllers\ClienteAPIController.cs" />
     <Compile Include="Controllers\MotoristaAPIController.cs" />
-    <Compile Include="Controllers\VeiculoApiController.cs" />
+    <Compile Include="Controllers\VeiculoAPIController.cs" />
     <Compile Include="Services\ConnectionManager.cs" />
     <Compile Include="Services\FleetManSecurityAccess.cs" />
     <Compile Include="Services\LoggerManager.cs" />

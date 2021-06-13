@@ -13,7 +13,7 @@ namespace FleetManDAL.Contexts
     [DbConfigurationType(typeof(MySqlEFConfiguration))]
     public class FleetManContext : DbContext
     {
-        public FleetManContext() :  base("MySqlContext")
+        public FleetManContext() : base("MySqlContext")
         {
             Database.SetInitializer(new DropCreateDatabaseIfModelChanges<FleetManContext>());
             this.Configuration.LazyLoadingEnabled = false;

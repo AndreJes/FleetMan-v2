@@ -5,10 +5,12 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:FleetManApiController.UserControls"
              mc:Ignorable="d">
-    <StackPanel Orientation="Horizontal">
-        <Label x:Name="DescriptionLabel" Style="{StaticResource SubLabelStyle}" Content="{Binding Description, UpdateSourceTrigger=PropertyChanged}"></Label>
+    <DockPanel LastChildFill="False">
+        <Label DockPanel.Dock="Left" x:Name="DescriptionLabel" Style="{StaticResource SubLabelStyle}" Content="{Binding Description, UpdateSourceTrigger=PropertyChanged}"></Label>
 
-        <Ellipse x:Name="StatusEllipse" Width="10" Height="10" StrokeThickness="1" VerticalAlignment="Center" HorizontalAlignment="Center"></Ellipse>
-        <Label x:Name="StateLabel" Style="{StaticResource StatusLabelStyle}"></Label>
-    </StackPanel>
+        <StackPanel Orientation="Horizontal" DockPanel.Dock="Right" Margin="5 0">
+            <Label x:Name="StateLabel" Style="{StaticResource StatusLabelStyle}"></Label>
+            <Ellipse x:Name="StatusEllipse" Width="10" Height="10" StrokeThickness="1" VerticalAlignment="Center"></Ellipse>
+        </StackPanel>
+    </DockPanel>
 </UserControl>
