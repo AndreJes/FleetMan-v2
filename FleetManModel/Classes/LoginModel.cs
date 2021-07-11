@@ -8,12 +8,13 @@ using System.Threading.Tasks;
 
 namespace FleetManModel.Classes
 {
-    public class LoginData
+    public class LoginModel
     {
         [Key]
         public string Email { get; set; }
         public string Login { get; set; }
         public string Password { get; set; }
         public string Salt { get; set; }
+        public string Role { get; set; }
     }
 }

@@ -129,6 +129,10 @@
     <Compile Include="Migrations\202010121758321_ForeignKeyMotoristaVeiculo_Cliente.Designer.cs">
       <DependentUpon>202010121758321_ForeignKeyMotoristaVeiculo_Cliente.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202107111552075_DefaultLoginAdmin.cs" />
+    <Compile Include="Migrations\202107111552075_DefaultLoginAdmin.Designer.cs">
+      <DependentUpon>202107111552075_DefaultLoginAdmin.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -160,6 +164,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202010121758321_ForeignKeyMotoristaVeiculo_Cliente.resx">
       <DependentUpon>202010121758321_ForeignKeyMotoristaVeiculo_Cliente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202107111552075_DefaultLoginAdmin.resx">
+      <DependentUpon>202107111552075_DefaultLoginAdmin.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

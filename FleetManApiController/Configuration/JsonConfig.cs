@@ -11,27 +11,15 @@ namespace FleetManApiController.Configuration
 {
     public static class JsonConfig
     {
-        public static JsonSerializerSettings DefaultSettings
+        public static JsonSerializerSettings DefaultSettings => new JsonSerializerSettings()
         {
-            get
-            {
-                return new JsonSerializerSettings()
-                {
-                    ContractResolver = new CamelCasePropertyNamesContractResolver(),
-                    ReferenceLoopHandling = ReferenceLoopHandling.Ignore
-                };
-            }
-        }
+            ContractResolver = new CamelCasePropertyNamesContractResolver(),
+            ReferenceLoopHandling = ReferenceLoopHandling.Ignore
+        };
 
-        public static JsonMediaTypeFormatter DefaultJsonMediaType
+        public static JsonMediaTypeFormatter DefaultJsonMediaType => new JsonMediaTypeFormatter()
         {
-            get
-            {
-                return new JsonMediaTypeFormatter()
-                {
-                    SerializerSettings = DefaultSettings
-                };
-            }
-        }
+            SerializerSettings = DefaultSettings
+        };
     }
 }

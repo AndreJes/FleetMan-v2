@@ -20,7 +20,7 @@ namespace FleetManModel.Classes
 
         [ForeignKey("LoginData")]
         public string Email { get; set; }
-        public virtual LoginData LoginData { get; set; }
+        public virtual LoginModel LoginData { get; set; }
 
         public virtual List<Veiculo> Veiculos { get; set; }
         public virtual List<Motorista> Motoristas { get; set; }

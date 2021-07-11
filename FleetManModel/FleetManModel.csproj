@@ -52,7 +52,7 @@
   <ItemGroup>
     <Compile Include="Classes\Cliente.cs" />
     <Compile Include="Classes\Endereco.cs" />
-    <Compile Include="Classes\LoginData.cs" />
+    <Compile Include="Classes\LoginModel.cs" />
     <Compile Include="Classes\Motorista.cs" />
     <Compile Include="Classes\Veiculo.cs" />
     <Compile Include="Helpers\FleetManHash.cs" />

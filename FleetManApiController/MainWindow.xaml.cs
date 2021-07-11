@@ -28,8 +28,6 @@ namespace FleetManApiController
     {
         LoggerManager LoggerManager = null;
 
-        DispatcherTimer DbTimer = null;
-
         public MainWindow()
         {
             InitializeComponent();
@@ -67,7 +65,6 @@ namespace FleetManApiController
             {
                 Logger.PrintText(new Run("Finalizando serviço..."), new Run(" --> "), new DateOptions(TextDecorationOptions.BOLD));
                 bool status = OwinService.Stop();
-                DbTimer.Stop();
                 await ServiceStatusUC.ChangeStatus(!status);
             }
             catch (Exception ex)

@@ -13,7 +13,7 @@ namespace FleetManServices.AuthServices
 {
     public class ClientLoginService
     {
-        public async Task<bool> ValidateLogin(string email, string password)
+        public async Task<UserInfo> ValidateLogin(string email, string password)
         {
             try
             {
@@ -22,27 +22,48 @@ namespace FleetManServices.AuthServices
                 using (FleetManContext context = new FleetManContext())
                 {
                     //Recover Salt string from Database
-                    LoginData loginData = await context.LoginDatas.Where(ld => ld.Email == email).FirstOrDefaultAsync();
+                    LoginModel loginData = await context.LoginDatas.Where(ld => ld.Email == email).FirstOrDefaultAsync();
 
                     if(loginData == null)
                     {
-                        return false;
+                        return new UserInfo();
                     }
 
                     string validation_hash = fleetManHash.GetHashedPassword(password, loginData.Salt);
 
                     if(validation_hash.Equals(loginData.Password))
                     {
-                        return true;
+                        return new UserInfo(is_valid:true, role:loginData.Role, cnpj:loginData.Login);
                     }
 
-                    return false;
+                    return new UserInfo();
                 }
             }
-            catch
+            catch (Exception e)
             {
-                return false;
+                throw e;
             }
+        }
+    }
+
+    public class UserInfo
+    {
+        public bool IsValid { get; set; }
+        public string Role { get; set; }
+        public string Cnpj { get; set; }
+
+        public UserInfo()
+        {
+            this.IsValid = false;
+            this.Role = "";
+            this.Cnpj = "";
+        }
+
+        public UserInfo(bool is_valid, string role, string cnpj)
+        {
+            this.IsValid = is_valid;
+            this.Role = role;
+            this.Cnpj = cnpj;
         }
     }
 }

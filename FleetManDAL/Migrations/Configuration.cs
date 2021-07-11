@@ -28,10 +28,12 @@ namespace FleetManDAL.Migrations
             string salt1 = hasher.GetSalt();
             string salt2 = hasher.GetSalt();
 
-            List<LoginData> logins = new List<LoginData>()
+            List<LoginModel> logins = new List<LoginModel>()
             {
-                new LoginData(){Email="cliente1@gmail.com", Login="12345678900001", Password=hasher.GetHashedPassword("123456789", salt1), Salt=salt1},
-                new LoginData(){Email="cliente2@gmail.com", Login="12345678900002", Password=hasher.GetHashedPassword("123456789", salt2), Salt=salt2}
+                new LoginModel(){Email="cliente1@gmail.com", Login="12345678900001", Password=hasher.GetHashedPassword("123456789", salt1), Salt=salt1, Role="Client"},
+                new LoginModel(){Email="cliente2@gmail.com", Login="12345678900002", Password=hasher.GetHashedPassword("123456789", salt2), Salt=salt2, Role="Client"},
+                new LoginModel(){Email="system@admin", Login="admin", Password=hasher.GetHashedPassword("admin", salt2), Salt=salt2, Role="Admin"}
+
             };
 
             context.LoginDatas.AddOrUpdate(logins.ToArray());
@@ -48,10 +50,10 @@ namespace FleetManDAL.Migrations
 
             List<Veiculo> veiculos = new List<Veiculo>()
             {
-                new Veiculo() {Ativo = true, Placa="JKU-2324", Ano=2002, Marca="Ford", Modelo="Focus", Renavam="01085793408", Chassi="BHP0RXR54AKNJLEZW", Cliente=clientes[0]},
-                new Veiculo() {Ativo = false, Placa="JHU-2134", Ano=2002, Marca="Ford", Modelo="Focus", Renavam="01085793407", Chassi="BHP0RXR54AKNJLEZZ", Cliente=clientes[0]},
-                new Veiculo() {Ativo = true, Placa="JOU-2214", Ano=2002, Marca="Ford", Modelo="Focus", Renavam="01085793405", Chassi="BHP0RXR54AKNJLEZY", Cliente=clientes[1]},
-                new Veiculo() {Ativo = false, Placa="JKK-1324", Ano=2002, Marca="Ford", Modelo="Focus", Renavam="01085793404", Chassi="BHP0RXR54AKNJLEZX", Cliente=clientes[1]}
+                new Veiculo() {Ativo = true, Placa="JKU-2324", Ano=2002, Marca="Ford", Modelo="Focus", Renavam="01085793408", Chassi="BHP0RXR54AKNJLEZW", Cliente_CNPJ= "12345678900001", Cliente=clientes[0]},
+                new Veiculo() {Ativo = false, Placa="JHU-2134", Ano=2002, Marca="Ford", Modelo="Focus", Renavam="01085793407", Chassi="BHP0RXR54AKNJLEZZ", Cliente_CNPJ= "12345678900001", Cliente=clientes[0]},
+                new Veiculo() {Ativo = true, Placa="JOU-2214", Ano=2002, Marca="Ford", Modelo="Focus", Renavam="01085793405", Chassi="BHP0RXR54AKNJLEZY", Cliente_CNPJ= "12345678900001", Cliente=clientes[1]},
+                new Veiculo() {Ativo = false, Placa="JKK-1324", Ano=2002, Marca="Ford", Modelo="Focus", Renavam="01085793404", Chassi="BHP0RXR54AKNJLEZX", Cliente_CNPJ= "12345678900002", Cliente=clientes[1]}
             };
 
             context.Veiculos.AddOrUpdate(veiculos.ToArray());
@@ -59,10 +61,10 @@ namespace FleetManDAL.Migrations
 
             List<Motorista> motoristas = new List<Motorista>()
             {
-                new Motorista() {Ativo = true, Nome="João", CPF="12345678900", CNH="98765432101", Email="Joao@gmail.com", Endereco = endpadrao, Cliente=clientes[0]},
-                new Motorista() {Ativo = false, Nome="Maria", CPF="12345678901", CNH="98765432102", Email="Maria@gmail.com", Endereco = endpadrao, Cliente=clientes[0]},
-                new Motorista() {Ativo = false, Nome="Jorge", CPF="12345678902", CNH="98765432103", Email="Jorge@gmail.com", Endereco = endpadrao, Cliente=clientes[1]},
-                new Motorista() {Ativo = true, Nome="Ana", CPF="12345678903", CNH="98765432104", Email="Ana@gmail.com", Endereco = endpadrao, Cliente=clientes[1]}
+                new Motorista() {Ativo = true, Nome="João", CPF="12345678900", CNH="98765432101", Email="Joao@gmail.com", Endereco = endpadrao, Cliente_CNPJ= "12345678900002", Cliente=clientes[0]},
+                new Motorista() {Ativo = false, Nome="Maria", CPF="12345678901", CNH="98765432102", Email="Maria@gmail.com", Endereco = endpadrao, Cliente_CNPJ= "12345678900002", Cliente=clientes[0]},
+                new Motorista() {Ativo = false, Nome="Jorge", CPF="12345678902", CNH="98765432103", Email="Jorge@gmail.com", Endereco = endpadrao, Cliente_CNPJ= "12345678900001", Cliente=clientes[1]},
+                new Motorista() {Ativo = true, Nome="Ana", CPF="12345678903", CNH="98765432104", Email="Ana@gmail.com", Endereco = endpadrao, Cliente_CNPJ= "12345678900001", Cliente=clientes[1]}
             };
 
             context.Motoristas.AddOrUpdate(motoristas.ToArray());

@@ -17,6 +17,7 @@ namespace FleetManApiController.Configuration
     public class CustomAccessTokenProvider : OAuthAuthorizationServerProvider
     {
         ClientLoginService clientLoginService = new ClientLoginService();
+        Logger Logger = LoggerManager.GetInstance().Loggers["MainLogger"];
 
         public override async Task ValidateClientAuthentication(OAuthValidateClientAuthenticationContext context)
         {
@@ -27,27 +28,48 @@ namespace FleetManApiController.Configuration
         {
             try
             {
-                Logger Logger = LoggerManager.GetInstance().Loggers["MainLogger"];
+                UserInfo user_data = await clientLoginService.ValidateLogin(context.UserName, context.Password);
 
-                if (await clientLoginService.ValidateLogin(context.UserName, context.Password))
+                if (user_data.IsValid)
                 {
                     ClaimsIdentity identity = new ClaimsIdentity(context.Options.AuthenticationType);
                     identity.AddClaim(new Claim(ClaimTypes.Name, context.UserName));
-                    identity.AddClaim(new Claim(ClaimTypes.Role, "Client"));
+                    identity.AddClaim(new Claim(ClaimTypes.Role, user_data.Role));
+
+                    context.OwinContext.Set<string>("user_cnpj", user_data.Cnpj);
 
                     context.Validated(identity);
                     Logger.Dispatcher.Invoke(() => Logger.PrintText(new Run("Novo token de acesso p/ usuário: " + context.UserName), new Run(" --> "), new DateOptions(TextDecorationOptions.BOLD)));
                 }
                 else
                 {
-                    context.SetError("acesso inválido", "Dados de login inválidos...");
+                    context.SetError("Acesso inválido", "Dados de login inválidos");
                     Logger.Dispatcher.Invoke(() => Logger.PrintText(new Run("Tentativa de login inválida detectada p/ usuário: " + context.UserName), new Run(" --> "), new DateOptions(TextDecorationOptions.BOLD))); return;
                 }
+
             }
             catch (Exception e)
             {
-                throw e;
+                if (context != null)
+                {
+                    context.SetError("Exception", e.ToString());
+                }
+                else
+                {
+                    throw e;
+                }
             }
+        }
+
+        public override Task TokenEndpointResponse(OAuthTokenEndpointResponseContext context)
+        {
+            string user_cnpj = context.OwinContext.Get<string>("user_cnpj");
+
+            Logger.Dispatcher.Invoke(() => Logger.PrintText(new Run("CNPJ usuário: " + user_cnpj), new Run(" --> "), new DateOptions(TextDecorationOptions.BOLD)));
+
+            context.AdditionalResponseParameters.Add("user_cnpj", user_cnpj);
+
+            return base.TokenEndpointResponse(context);
         }
     }
 }

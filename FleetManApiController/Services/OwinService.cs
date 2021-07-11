@@ -32,9 +32,13 @@ namespace FleetManApiController.Services
         {
             try
             {
-                service.Dispose();
+                if(service != null)
+                {
+                    service.Dispose();
+                    return true;
+                }
 
-                return true;
+                return false;
             }
             catch (Exception ex)
             {
